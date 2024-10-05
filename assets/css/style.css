@@ -15,7 +15,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #f6f9ff;
+  background: #bf9742;
   color: #444444;
 }
 
@@ -226,7 +226,7 @@ h6 {
 
 .card-header,
 .card-footer {
-  border-color: #ebeef4;
+  border-color: #556ea2;
   background-color: #fff;
   color: #798eb3;
   padding: 15px;
@@ -381,7 +381,7 @@ h6 {
   z-index: 997;
   height: 60px;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color: #61481c;
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
