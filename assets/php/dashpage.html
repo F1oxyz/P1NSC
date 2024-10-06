@@ -69,7 +69,10 @@
             </a>
             <ul class="submenu dropdown-menu">
               <li><a href="#" onclick="cambiarIdioma('zapoteco')">Zapoteco</a></li>
+              <li><a href="#" onclick="cambiarIdioma('mixteco')">Mixteco</a></li>
+              <li><a href="#" onclick="cambiarIdioma('mazateco')">Mazateco</a></li>
               <li><a href="#" onclick="cambiarIdioma('espanol')">Español</a></li>
+              <li><a href="#" onclick="cambiarIdioma('ingles')">Inglés</a></li>
             </ul>
           </li>
         </div>
@@ -180,8 +183,42 @@
         maguey : "Maguey",
         calabacin : "Calabacín",
         frijol : "frijol"
+      },
+      mixteco: {
+        greeting: "Ka’ani, Pepito",
+        cultivosTitle: "Naña ñu yivi",
+        multicultivoTitle: "Tindi ñu",
+        analizarBtn: "Chiki",
+        maiz: "Nduta",
+        trigo: "Yodo",
+        maguey: "Tsí",
+        calabacin: "Ntutu",
+        frijol: "Saba"
+      },
+      mazateco: {
+        greeting: "Ntaji, Pepito",
+        cultivosTitle: "Nchikajin kaji",
+        multicultivoTitle: "Nchikajin xì",
+        analizarBtn: "Kijchika",
+        maiz: "To’",
+        trigo: "Tjeeni",
+        maguey: "Xidì",
+        calabacin: "Ndina",
+        frijol: "Jndi"
+      },
+      ingles: {
+        greeting: "Hello, Pepito",
+        cultivosTitle: "Potential Crops",
+        multicultivoTitle: "Multicrop",
+        analizarBtn: "Analyze",
+        maiz: "Corn",
+        trigo: "Wheat",
+        maguey: "Maguey",
+        calabacin: "Zucchini",
+        frijol: "Bean"
       }
-    };
+
+          };
 
     document.getElementById('greeting').innerText = textos[idioma].greeting;
     document.getElementById('cultivos-title').innerText = textos[idioma].cultivosTitle;
