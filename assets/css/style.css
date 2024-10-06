@@ -15,7 +15,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #bf9742;
+  background: #FFF9C9;/*COLOR DE FONDO..... COLOR DE FONDO ...... COLOR DE FONDO*/
   color: #444444;
 }
 
@@ -42,7 +42,7 @@ h6 {
 # Main
 --------------------------------------------------------------*/
 #main {
-  margin-top: 60px;
+  margin-top: 90px;
   padding: 20px 30px;
   transition: all 0.3s;
 }
@@ -226,7 +226,7 @@ h6 {
 
 .card-header,
 .card-footer {
-  border-color: #556ea2;
+  border-color: #ebeef4;
   background-color: #fff;
   color: #798eb3;
   padding: 15px;
@@ -236,12 +236,12 @@ h6 {
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
-  color: #012970;
+  color: #241203;
   font-family: "Poppins", sans-serif;
 }
 
 .card-title span {
-  color: #899bbd;
+  color: #847060;
   font-size: 14px;
   font-weight: 400;
 }
@@ -305,14 +305,14 @@ h6 {
 
 /* Breadcrumbs */
 .breadcrumb {
-  font-size: 14px;
-  font-family: "Nunito", sans-serif;
-  color: #899bbd;
-  font-weight: 600;
+  font-size: 24px;
+  font-family: "Nunito", 'Lucida sans ';
+  color: #180801;
+  font-weight: 900;
 }
 
 .breadcrumb a {
-  color: #899bbd;
+  color: #160903;
   transition: 0.3s;
 }
 
@@ -320,13 +320,8 @@ h6 {
   color: #51678f;
 }
 
-.breadcrumb .breadcrumb-item::before {
-  color: #899bbd;
-}
-
-.breadcrumb .active {
-  color: #51678f;
-  font-weight: 600;
+.breadcrumb .breadcrumb-item {
+  color: #160903;
 }
 
 /* Bordered Tabs */
@@ -364,34 +359,51 @@ h6 {
   }
 }
 
+/*la imagen del logo           .....................................*/
 .logo img {
   max-height: 26px;
   margin-right: 6px;
 }
 
-.logo span {
+.logo span {  /*AQUI NOS INDICA EL LOGO EN ESTE CASO PEPITO */
   font-size: 26px;
   font-weight: 700;
-  color: #012970;
+  color: #bee7d8; 
   font-family: "Nunito", sans-serif;
 }
 
 .header {
   transition: all 0.5s;
   z-index: 997;
-  height: 60px;
+  height: 90px;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-  background-color: #61481c;
+  background-color: #6F4E37; /*COLOR DE LA BARRITA DE ARRIBA ----- CPOLOR DE LA BARRITA DE ARRIBA */
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
 }
 
+/*BARRITA VERDE DECO...........BARRITA VERDE................................*/
+.headd {
+  transition: all 0.5s;
+  z-index: 997;
+  height: 50px;
+  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+  background-color: #B5C99A; /*COLOR DE LA BARRITA DE ARRIBA ----- CPOLOR DE LA BARRITA DE ARRIBA */
+  padding: 40px, 40px;
+  transform: translateY(90px); /*con esta se puede mover 60px hacia abajo*/
+  justify-content: flex-end;
+
+}
+
+/*eata parte es de la barra de menu desplegable*/
+
 .header .toggle-sidebar-btn {
   font-size: 32px;
-  padding-left: 10px;
+  padding-top: 12px;
+  padding-right: 13px;
   cursor: pointer;
-  color: #012970;
+  color: #352006; /*AQUI ESTA PARA DESPLEGAR EL MENU*/
 }
 
 .header .search-bar {
@@ -463,13 +475,14 @@ h6 {
 
 .header-nav>ul {
   margin: 0;
-  padding: 0;
 }
 
+/*capsula de mensaje y tres barras */
 .header-nav .nav-icon {
-  font-size: 22px;
-  color: #012970;
-  margin-right: 25px;
+  font-size: 27px;
+  color: #352006; /*AQUI ESTA EL COLOR DEL SIMBOLO MESNAJEE*/
+  margin-right: 2px;
+  margin-top: 15px;
   position: relative;
 }
 
@@ -477,13 +490,18 @@ h6 {
   color: #012970;
 }
 
+/*Esta parte es la del perfil del usuario*/
 .header-nav .nav-profile img {
-  max-height: 36px;
+  max-height: 35px;
+  margin-top: 15px;
+  margin-left: 0px;
 }
 
+/*esta parte es del nombre del usuario*/
 .header-nav .nav-profile span {
+  margin-top: 15px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .header-nav .badge-number {
@@ -599,7 +617,7 @@ h6 {
 --------------------------------------------------------------*/
 .sidebar {
   position: fixed;
-  top: 60px;
+  top: 140px;
   left: 0;
   bottom: 0;
   width: 300px;
@@ -610,7 +628,8 @@ h6 {
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color: #6F4E37; 
+  /*COLOR DE LA BARRA DESPLEGABLE .... COLOR DE LA BARRA DESPLEGABLE */
 }
 
 @media (max-width: 1199px) {
@@ -684,7 +703,7 @@ h6 {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #4154f1;
+  color: #4154f1;/*COLOR DE LA PARTE DE DASHBOARD   .............................................*/
   transition: 0.3;
   background: #f6f9ff;
   padding: 10px 15px;
@@ -694,7 +713,7 @@ h6 {
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color: #4154f1;
+  color: #4154f1;/*ICONO ICONO ICONO DEL DASHBORD*/
 }
 
 .sidebar-nav .nav-link.collapsed {
@@ -768,7 +787,7 @@ h6 {
 }
 
 .dashboard .filter .icon {
-  color: #aab7cf;
+  color: #fff;
   padding-right: 20px;
   padding-bottom: 5px;
   transition: 0.3s;
@@ -980,6 +999,7 @@ h6 {
 .iconslist i {
   margin: 0.25rem;
   font-size: 2.5rem;
+
 }
 
 .iconslist .label {

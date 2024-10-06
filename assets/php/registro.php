@@ -7,12 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="./login.css">
     <title>Register</title>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-      emailjs.init('O3AE29jtznmBCGcVO');
+      emailjs.init('g00CRSsL-p8_jOJSY')
     </script>
 </head>
 <body>
@@ -83,7 +84,6 @@ include("../bd/conexion.php");
             $email = $_POST['email'];
             $name = $_POST['name'];
             $lastname = $_POST['lastname'];
-            $school = $_POST['school'];
             $rol = $_POST['rol'];
             $password = $_POST['password'];
 
@@ -97,10 +97,14 @@ include("../bd/conexion.php");
           echo "</script>";
         }else{
 
-          mysqli_query($conexion,"INSERT INTO users (email,password,name,lastname,school,roles_id) VALUES('$email','$password','$name','$lastname','$school','$rol')");
+          mysqli_query($conexion,"INSERT INTO users (email,password,name,lastname,roles_id) VALUES('$email','$password','$name','$lastname','$rol')");
           ?>
           <script>
-            emailjs.send("TeamHangmanG","template_Hangman",{
+
+            const serviceID = 'default_service';
+            const templateID = 'templateCozobi';
+
+            emailjs.sendForm(serviceID, templateID,{
               to_name: "<?= $name ?>",
               to_email: "<?= $email ?>",
             });
@@ -132,10 +136,6 @@ include("../bd/conexion.php");
                     <input type="text" name="lastname" id="lastname" placeholder="ej.Perez Perez" autocomplete="off" required>
                 </div>
                 <div class="field padding-bottom--24">
-                    <label for="text">Escuela</label>
-                    <input type="text" name="school" id="school" placeholder="ej. CBTis 150" autocomplete="off" required>
-                </div>
-                <div class="field padding-bottom--24">
                     <label for="password">Contraseña</label>
                     <input type="password" name="password" id="password"  placeholder="*******" autocomplete="off" onkeyup="checkPasswordMatch()" required>
                 </div>
@@ -148,9 +148,10 @@ include("../bd/conexion.php");
                 <label for="rol">Selecciona tu rol</label>
                     <select name="rol" id="rol" onchange="validateSelect()" required >
                         <option value="0">Selecciona una opción</option>
-                        <option value="3">Alumno</option>
-                        <option value="2">Docente</option>
-                        <option value="4">Otro</option>
+                        <option value="2">Ingeniero</option>
+                        <option value="3">Estudiante</option>
+                        <option value="4">Agricultor</option>
+                        <option value="5">Otro</option>
                     </select>
                 </div>
                 <p id="selectErrorMessage" style="color: red;"></p>

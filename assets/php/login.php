@@ -2,7 +2,7 @@
 session_start();
 include("../bd/conexion.php");
 if (isset($_SESSION['id'])) {
-  header("Location: ./dashpage.php");
+  header("Location: /indexdos.html");
 }
 
 ?>
@@ -15,10 +15,11 @@ if (isset($_SESSION['id'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link rel="stylesheet" href="../assets/css/login.css">
+  <link rel="stylesheet" href="./login.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>Login</title>
 </head>
+    
 
 <body>
   <script type="text/javascript">
@@ -121,6 +122,9 @@ if (isset($_SESSION['id'])) {
                 <div class="links">
                   No tienes cuenta? <a href="./registro.php">Registrate ahora</a>
                 </div>
+                <div class="reset-pass">
+                        <a href="./index.html">Regresar</a>
+                </div>
               </div>
             <?php } ?>
           </div>
@@ -128,30 +132,6 @@ if (isset($_SESSION['id'])) {
       </div>
     </div>
   </div>
-  <!-- <div class="container">
-        <div class="box form-box"> -->
-
-
-
-  <!-- <h1>Login</h1>
-            <form action="" method="post">
-                <div class="field input">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" required>
-                </div>
-
-                <div class="field input">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" required>
-                </div>
-
-                <div class="field">
-                    <input type="submit" class="btn" name="submit" value="Login" required>
-                </div>
-                <div class="links">
-                    No tienes cuenta? <a href="./registro.php">Registrate ahora</a>
-                </div>
-            </form> -->
 
 </body>
 
