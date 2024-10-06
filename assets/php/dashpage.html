@@ -45,26 +45,26 @@
         </div>
         <div class="right">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="herramientas">
               Más herramientas
             </a>
             <ul class="submenu dropdown-menu">
-              <li><a href="#">Multicultivo</a></li>
-              <li><a href="#" >Análisis de suelo</a></li>
+              <li><a href="#" id="multicultivoTitle">Multicultivo</a></li>
+              <li><a href="#" id="AnalisisSuelo" >Análisis de suelo</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="configuracion">
               Configuración
             </a>
             <ul class="submenu dropdown-menu">
-              <li><a href="#">Usuario</a></li>
-              <li><a href="#">Acerca de</a></li>
+              <li><a href="#" id="usuario">Usuario</a></li>
+              <li><a href="#" id="acerca">Acerca de</a></li>
               <li><a href="./cerrarsesion.php" id="logout-btn">Cerrar sesión</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="lenguaje">
               Lenguaje
             </a>
             <ul class="submenu dropdown-menu">
@@ -84,7 +84,7 @@
 <!-- Contenedor del video centrado -->
 <div class="video-container">
   <video id="video" controls>
-      <source src="./videos/Cozobi.mp4" type="video/mp4">
+      <source src="./videos/Cozobi.mp4" type="video/mp4" id="error">
       Tu navegador no soporta el elemento de video.
   </video>
 </div>
@@ -171,7 +171,15 @@
         trigo : "Guïul",
         maguey : "Bëë",
         calabacin : "Gui’e",
-        frijol : "bɨ́ri/nɨ́ɨ"
+        frijol : "bɨ́ri/nɨ́ɨ",
+        herramientas: "Chië guláh ri",
+        AnalisisSuelo: "Análisis de ran yaga",
+        configuracion: "Tseyelü",
+        usuario: "Bëëru",
+        acerca: "Rikó",
+        cerrarSesion: "Gunë ne na'",
+        lenguaje: "Rin gút",
+        error: "Neni rika ru navegador, zha ni nga'a güni."
       },
       espanol: {
         greeting: "¡Hola!, Pepito",
@@ -182,7 +190,15 @@
         trigo : "Trigo",
         maguey : "Maguey",
         calabacin : "Calabacín",
-        frijol : "frijol"
+        frijol : "frijol",
+        herramientas: "Más herramientas" ,
+        AnalisisSuelo: "Análisis de suelo" , 
+        configuracion: "Configuración",
+        usuario: "Usuario",
+        acerca: "Acerca de",
+        cerrarSesion: "Cerrar sesión",
+        lenguaje: "Lenguaje",
+        error: "Tu navegador no soporta el elemento de video."
       },
       mixteco: {
         greeting: "Ka’ani, Pepito",
@@ -193,7 +209,15 @@
         trigo: "Yodo",
         maguey: "Tsí",
         calabacin: "Ntutu",
-        frijol: "Saba"
+        frijol: "Saba",
+        herramientas: "Ndáá xtava",
+        AnalisisSuelo: "Kuàan xiñà ñuu",
+        configuracion: "Kuayu",
+        usuario: "Ndìi",
+        acerca: "Ta'an",
+        cerrarSesion: "Ña xu'un",
+        lenguaje: "Ika ñuu",
+        error: "Kaa nga'á yoso navegador, ka'a xia ntonì."
       },
       mazateco: {
         greeting: "Ntaji, Pepito",
@@ -204,7 +228,15 @@
         trigo: "Tjeeni",
         maguey: "Xidì",
         calabacin: "Ndina",
-        frijol: "Jndi"
+        frijol: "Jndi",
+        herramientas: "Xka'mida",
+        AnalisisSuelo: "Tchebi'ñe yùuma",
+        configuracion: "I'ndani",
+        usuario: "Yo'uni",
+        acerca: "Xi ndam",
+        cerrarSesion: "Mbi ndich",
+        lenguaje: "Ka'andee",
+        error: "Iínñ iín navegador kà'a bi'ne ye'a."
       },
       ingles: {
         greeting: "Hello, Pepito",
@@ -215,7 +247,15 @@
         trigo: "Wheat",
         maguey: "Maguey",
         calabacin: "Zucchini",
-        frijol: "Bean"
+        frijol: "Bean",
+        herramientas: "More tools",
+        AnalisisSuelo: "Soil analysis",
+        configuracion: "Settings",
+        usuario: "User",
+        acerca: "About",
+        cerrarSesion: "Log out",
+        lenguaje: "Language",
+        error: "Your browser does not support the video element."
       }
 
           };
@@ -229,6 +269,15 @@
     document.getElementById('maguey').innerText = textos[idioma].maguey;
     document.getElementById('calabacin').innerText = textos[idioma].calabacin;
     document.getElementById('frijol').innerText = textos[idioma].frijol;
+
+    document.getElementById('herramientas').innerText = textos[idioma].herramientas;
+    document.getElementById('AnalisisSuelo').innerText = textos[idioma].AnalisisSuelo;
+    document.getElementById('configuracion').innerText = textos[idioma].configuracion;
+    document.getElementById('usuario').innerText = textos[idioma].usuario;
+    document.getElementById('acerca').innerText = textos[idioma].acerca;
+    document.getElementById('logout-btn').innerText = textos[idioma].cerrarSesion;
+    document.getElementById('lenguaje').innerText = textos[idioma].lenguaje;
+    document.getElementById('error').innerText = textos[idioma].error;
   }
 
   // Reproducir video cuando se presiona el botón Analizar
