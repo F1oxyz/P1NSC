@@ -104,7 +104,7 @@ include("./conexion.php");
           echo "</script>";
         }else{
 
-          mysqli_query($conexion,"INSERT INTO users (email,password,name,lastname,reles) VALUES('$email','$password','$name','$lastname','$rol')");
+          mysqli_query($conexion,"INSERT INTO users (email,password,name,lastname,roles) VALUES('$email','$password','$name','$lastname','$rol')");
           ?>
           <script>
 

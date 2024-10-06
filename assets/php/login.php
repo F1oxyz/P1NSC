@@ -2,7 +2,7 @@
 session_start();
 include("./conexion.php");
 if (isset($_SESSION['id'])) {
-  header("Location: /assets/php/dashpage.php");
+  header("Location: /P1NSC/assets/php/dashpage.html");
 }
 
 ?>
