@@ -1,160 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Solo una referencia a Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./styledash.css">
     <link rel="stylesheet" href="/assets/css/salas.css">
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     <title>Dashboard</title>
+    <style>
+        /* CSS para centrar el video */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh; /* Ajusta la altura del contenedor */
+        }
+
+        video {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <div class="logo">
-        <img src="/assets/img/logo.png" alt="cozobi">
+        <img src="./img/logo.png" alt="cozobi">
     </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse nav" id="navbarNavDropdown">
       <ul class="navbar-nav">
-      <div class="left">
-        <li class="nav-item">
-          <p class="nav-link">¡Hola!, Pepito</p>
-        </li>   
-        <li class="nav-item">
-          <p id="datetime" class="nav-link"></p>
-        </li>   
-      </div> 
-      <div class="right">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Más herramientas
-          </a>
-          <ul class="submenu dropdown-menu">
-            <li><a href="./crear.php?select=palabra" >Multicultivo</a></li>
-            <li><a href="./crear.php?select=palabra" >Análisis de suelo</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Configuración
-          </a>
-          <ul class="submenu dropdown-menu">
-            <li><a href="#">Usuario</a></li>
-            <li><a href="#">Lenguaje</a></li>
-            <li><a href="#">Acerca de</a></li>
-            <li class="nav-item">
-              <a href="./cerrarsesion.php" id="logout-btn">Cerrar sesión</a>
-            </li> 
-          </ul>
-        </li>   
-      </div>  
+        <div class="left">
+          <li class="nav-item">
+            <p class="nav-link" id="greeting">¡Hola!, Pepito</p>
+          </li>
+          <li class="nav-item">
+            <p id="datetime" class="nav-link"></p>
+          </li>
+        </div>
+        <div class="right">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Más herramientas
+            </a>
+            <ul class="submenu dropdown-menu">
+              <li><a href="#">Multicultivo</a></li>
+              <li><a href="#" >Análisis de suelo</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Configuración
+            </a>
+            <ul class="submenu dropdown-menu">
+              <li><a href="#">Usuario</a></li>
+              <li><a href="#">Acerca de</a></li>
+              <li><a href="./cerrarsesion.php" id="logout-btn">Cerrar sesión</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Lenguaje
+            </a>
+            <ul class="submenu dropdown-menu">
+              <li><a href="#" onclick="cambiarIdioma('zapoteco')">Zapoteco</a></li>
+              <li><a href="#" onclick="cambiarIdioma('espanol')">Español</a></li>
+            </ul>
+          </li>
+        </div>
       </ul>
     </div>
   </div>
 </nav>
 
-<main>
-    <div class="salas_consultar">
-        <div id="sala_consultar" class="content">
-            <h2>Tus salas</h2>
-            <div class="container">
-            <!-- Contenido de las salas consultadas -->
-            No hay salas registradas.
-            </div>
-        </div>
-    </div>
-    <div class="palabras">
-        <div id="palabras_consultar" class="content">
-            <h2>Tus palabras</h2>
-            <div class="container2">
-            <!-- Contenido de las palabras consultadas -->
-            No hay palabras registradas.
-            </div>
-        </div>
-    </div>
+<!-- Contenedor del video centrado -->
+<div class="video-container">
+  <video id="video" controls>
+      <source src="./videos/Cozobi.mp4" type="video/mp4">
+      Tu navegador no soporta el elemento de video.
+  </video>
+</div>
 
-    <div class="listas">
-        <div id="listas_consultar" class="content">
-            <h2>Tus listas</h2>
-            <div class="container3">
-            <!-- Contenido de las listas consultadas -->
-            No hay listas registradas.
-            </div>
-        </div>
-    </div>
-</main>
-<div id="map"></div>
-
+<!-- Botón Analizar -->
+<div class="text-center">
+  <button class="btn btn-primary" id="analizar-btn">Analizar</button>
+</div>
 <!-- Sección de cultivos potenciales -->
 <div class="cultivos-container">
-  <h2>Cultivos Potenciales</h2>
+  <h2 id="cultivos-title">Cultivos Potenciales</h2>
   <div class="cultivos">
       <div class="cultivo-item">
           <div class="circle">
-              <img src="https://cdn-icons-png.flaticon.com/512/575/575685.png" alt="Maíz">
+              <img src="./img/plantas/maiz.png" alt="Maíz">
           </div>
-          <p>Maíz</p>
+          <p id="maiz">Maíz</p>
       </div>
       <div class="cultivo-item">
           <div class="circle">
-              <img src="https://cdn-icons-png.flaticon.com/512/575/575602.png" alt="Trigo">
+              <img src="./img/plantas/trigo.png" alt="Trigo">
           </div>
-          <p>Trigo</p>
+          <p id="trigo">Trigo</p>
       </div>
       <div class="cultivo-item">
           <div class="circle">
-              <img src="https://cdn-icons-png.flaticon.com/512/575/575621.png" alt="Maguey">
+              <img src="./img/plantas/maguey.png" alt="Maguey">
           </div>
-          <p>Maguey</p>
+          <p id="maguey">Maguey</p>
+      </div>
+      <div class="cultivo-item">
+          <div class="circle">
+              <img src="./img/plantas/calabacin.png" alt="Calabacín">
+          </div>
+          <p id="calabacin">Calabacín</p>
       </div>
   </div>
 </div>
 
-<!-- Texto Multicultivo -->
-<h2 class="multicultivo-title">Multicultivo</h2>
+<h2 class="multicultivo-title" id="multicultivo-title">Multicultivo</h2>
 
-<!-- Sección de multicultivo con maíz y frijol -->
 <div class="multicultivo-container">
   <div class="multicultivo-item">
       <div class="circle">
-          <img src="https://cdn-icons-png.flaticon.com/512/575/575685.png" alt="Maíz">
+          <img src="./img/plantas/maiz.png" alt="Maíz">
       </div>
-      <p>Maíz</p>
+      <p id="trigo">Trigo</p>
   </div>
   <div class="multicultivo-item">
       <div class="circle">
-          <img src="https://cdn-icons-png.flaticon.com/512/1041/1041853.png" alt="Frijol">
+          <img src="./img/plantas/frijoles.png" alt="Frijol">
       </div>
-      <p>Frijol</p>
+      <p id="frijol">Frijol</p>
   </div>
 </div>
 
-
-    <script>
-        function iniciarMap() {
-            const oaxaca = { lat: 17.0585, lng: -96.7214 }; // Coordenadas de Oaxaca, México
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 10,
-                center: oaxaca,
-            });
-            const marker = new google.maps.Marker({
-                position: oaxaca,
-                map: map,
-                title: "Oaxaca",
-            });
-        }
-    </script>
-<script src="../assets/js/dashpage.js"></script>
 <script>
+  // Función para actualizar fecha y hora
   function updateDateTime() {
       const options = {
           timeZone: 'America/Cancun',
@@ -170,6 +155,51 @@
       document.getElementById('datetime').innerHTML = dateTime;
   }
   setInterval(updateDateTime, 1000);
+
+  // Función para cambiar el idioma
+  function cambiarIdioma(idioma) {
+    const textos = {
+      zapoteco: {
+        greeting: "Bini'lapë, Pepito",
+        cultivosTitle: "Rin xihi cultivos",
+        multicultivoTitle: '"Multicultivo"',
+        analizarBtn: "Nabə'ni",
+        maiz : "Bi'yé",
+        trigo : "Guïul",
+        maguey : "Bëë",
+        calabacin : "Gui’e",
+        frijol : "bɨ́ri/nɨ́ɨ"
+      },
+      espanol: {
+        greeting: "¡Hola!, Pepito",
+        cultivosTitle: "Cultivos Potenciales",
+        multicultivoTitle: "Multicultivo",
+        analizarBtn: "Analizar",
+        maiz : "Maíz",
+        trigo : "Trigo",
+        maguey : "Maguey",
+        calabacin : "Calabacín",
+        frijol : "frijol"
+      }
+    };
+
+    document.getElementById('greeting').innerText = textos[idioma].greeting;
+    document.getElementById('cultivos-title').innerText = textos[idioma].cultivosTitle;
+    document.getElementById('multicultivo-title').innerText = textos[idioma].multicultivoTitle;
+    document.getElementById('analizar-btn').innerText = textos[idioma].analizarBtn;
+    document.getElementById('maiz').innerText = textos[idioma].maiz;
+    document.getElementById('trigo').innerText = textos[idioma].trigo;
+    document.getElementById('maguey').innerText = textos[idioma].maguey;
+    document.getElementById('calabacin').innerText = textos[idioma].calabacin;
+    document.getElementById('frijol').innerText = textos[idioma].frijol;
+  }
+
+  // Reproducir video cuando se presiona el botón Analizar
+  document.getElementById('analizar-btn').addEventListener('click', function() {
+      var video = document.getElementById('video');
+      video.play();
+  });
 </script>
+
 </body>
 </html>
