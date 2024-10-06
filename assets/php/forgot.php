@@ -2,7 +2,7 @@
 session_start();
 include("./conexion.php");
 if (isset($_SESSION['id'])) {
-  header("Location: /assets/php/dashpage.php");
+  header("Location: ./dashpage.php");
 }
 
 ?>
@@ -15,22 +15,35 @@ if (isset($_SESSION['id'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link rel="stylesheet" href="./login.css">
+  <link rel="stylesheet" href="../assets/css/login.css">
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    emailjs.init('g00CRSsL-p8_jOJSY')
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <title>Login</title>
+  <title>Envia tu información</title>
 </head>
-    
 
 <body>
   <script type="text/javascript">
     function JSalert() {
       Swal.fire({
-  icon: "error",
-  title: "Error!",
-  text: "Error al iniciar sesion, contraseña o email incorrectos!",
-  confirmButtonColor: "#000000",
-  confirmButtonText: `<a href="./login.php">Regresar</a>`,
-});
+        icon: "success",
+        title: "Exitoso!",
+        text: "Correo enviado correctamente, Si no lo ves en tu bandeja de entrada,checa la carpeta de SPAM.",
+        confirmButtonColor: "#000000",
+        confirmButtonText: `<a href="./login.php">Iniciar sesion</a>`,
+      });
+    }
+    function JSalert2() {
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "No hay se encontro alguna coincidencia con el email ingresado.",
+        confirmButtonColor: "#000000",
+        confirmButtonText: `<a href="./forgot.php">Regresar</a>`,
+      });
     }
   </script>
   <div class="login-root">
@@ -78,52 +91,48 @@ if (isset($_SESSION['id'])) {
 
             if (isset($_POST['submit'])) {
               $email = mysqli_real_escape_string($conexion, $_POST['email']);
-              $password = mysqli_real_escape_string($conexion, $_POST['password']);
 
-              $result = mysqli_query($conexion, "SELECT * FROM users WHERE email='$email' AND password='$password' ");
+              $result = mysqli_query($conexion, "SELECT email, password, name FROM users WHERE email='$email'");
               $row = mysqli_fetch_assoc($result);
 
               if (is_array($row) && !empty($row)) {
-                $_SESSION['id'] = $row['id'];
-              } else {
+                ?>
+                <script>
+
+                
+
+                  emailjs.send("TeamHangmanG", "HangmanGameReset", {
+                    to_name: "<?= $row['name'] ?>",
+                    to_mail: "<?= $row['email'] ?>",
+                    to_password: "<?= $row['password'] ?>",
+                  });
+                </script>
+                <?php
                 echo "<script>";
                 echo "JSalert();";
                 echo "</script>";
-
-              }
-              //este es porsi ya habia iniciado antes q lo mande directo al dash
-              if (isset($_SESSION['id'])) {
-                header("Location: ./dashpage.html");
+              } else {
+                echo "<script>";
+                echo "JSalert2();";
+                echo "</script>";
               }
             } else {
 
 
               ?>
               <div class="formbg-inner padding-horizontal--48">
-                <span class="padding-bottom--15">Iniciar Sesion</span>
+                <span class="padding-bottom--15">Enviar datos</span>
                 <form id="stripe-login" action="" method="post">
                   <div class="field padding-bottom--24">
                     <label for="email">Email</label>
                     <input type="email" name="email">
                   </div>
                   <div class="field padding-bottom--24">
-                    <div class="grid--50-50">
-                      <label for="password">Password</label>
-                      <div class="reset-pass">
-                        <a href="./forgot.php">Forgot your password?</a>
-                      </div>
-                    </div>
-                    <input type="password" name="password">
-                  </div>
-                  <div class="field padding-bottom--24">
-                    <input type="submit" class="btn" name="submit" value="Login" required>
+                    <input type="submit" class="btn" name="submit" value="Enviar datos" required>
                   </div>
                 </form>
                 <div class="links">
-                  No tienes cuenta? <a href="./registro.php">Registrate ahora</a>
-                </div>
-                <div class="reset-pass">
-                        <a href="../index.html">Regresar</a>
+                  <a href="./login.php">Regresar</a>
                 </div>
               </div>
             <?php } ?>
@@ -134,6 +143,5 @@ if (isset($_SESSION['id'])) {
   </div>
 
 </body>
-
 
 </html>

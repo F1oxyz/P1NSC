@@ -1,4 +1,11 @@
+<?php
+session_start();
+include("./conexion.php");
+if (isset($_SESSION['id'])) {
+  header("Location: /assets/php/dashpage.php");
+}
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +86,7 @@ function JSalert2() {
           <div class="formbg">
 <?php 
 
-include("/bd/conexion.php");
+include("./conexion.php");
         if(isset($_POST['submit'])){
             $email = $_POST['email'];
             $name = $_POST['name'];
@@ -97,7 +104,7 @@ include("/bd/conexion.php");
           echo "</script>";
         }else{
 
-          mysqli_query($conexion,"INSERT INTO users (email,password,name,lastname,roles_id) VALUES('$email','$password','$name','$lastname','$rol')");
+          mysqli_query($conexion,"INSERT INTO users (email,password,name,lastname,reles) VALUES('$email','$password','$name','$lastname','$rol')");
           ?>
           <script>
 
