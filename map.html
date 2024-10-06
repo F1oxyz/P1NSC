@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Google</title>
+    <style>
+        /* Estilo para el mapa */
+        #map {
+            height: 400px; /* Altura del mapa */
+            width: 100%; /* Ancho del mapa */
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap" async defer></script>
+    <script>
+        function iniciarMap() {
+            // Ubicación inicial del mapa
+            const oaxaca = { lat: 17.0585, lng: -96.7214 }; // Coordenadas de Oaxaca, México
+
+            // Crear el mapa
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10, // Nivel de zoom
+                center: oaxaca, // Centro del mapa
+            });
+
+            // Crear un marcador en el mapa
+            const marker = new google.maps.Marker({
+                position: oaxaca, // Posición del marcador
+                map: map, // Mapa donde se mostrará el marcador
+                title: "Oaxaca", // Título que aparecerá al pasar el ratón sobre el marcador
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Mapa de Google</h1>
+    <div id="map"></div>
+</body>
+</html>
