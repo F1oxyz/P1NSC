@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/styledash.css">
+    <link href="/assets/bootstrap/themes/sketchy/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/salas.css">
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <title>Dashboard</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="logo">
+        <img src="/assets/img/logo.png" alt="Logo">
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse nav" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+      <div class="left">
+        <!-- <li class="nav-item">
+        <p class="nav-link scrollto">ADMINISTRADOR SALAS</p>
+        </li> -->
+        <li class="nav-item">
+        <p class="nav-link">¡Hola!, [Nombre del Usuario]</p>
+        </li>   
+        <li class="nav-item">
+        <p id="datetime" class="nav-link"></p>
+        </li>   
+      </div> 
+      <div class="right">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Más herramientas
+          </a>
+          <ul class="submenu dropdown-menu">
+            <li><a href="./crear.php?select=palabra" >Multicultivo</a></li>
+            <li><a href="./crear.php?select=palabra" >Analisis de suelo</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Configuración
+          </a>
+          <ul class="submenu dropdown-menu">
+            <li><a href="#" ></a>Usuario</li>
+            <li><a href="#" ></a>Lenguaje</li>
+            <li><a href="#" ></a>Acerca de</li>
+            <li class="nav-item">
+              <a href="./cerrarsesion.php"> <button id="logout-btn">Cerrar sesión</button> </a>
+              </li> 
+          </ul>
+        </li>
+         
+      </div>  
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+
+<main>
+    <div class="salas_consultar">
+        <div id="sala_consultar" class="content">
+            <h2>Tus salas</h2>
+            <div class="container">
+            <!-- Aquí estaría el contenido de las salas consultadas -->
+            No hay salas registradas.
+            </div>
+        </div>
+    </div>
+    <div class="palabras">
+        <div id="palabras_consultar" class="content">
+            <h2>Tus palabras</h2>
+            <div class="container2">
+            <!-- Aquí estaría el contenido de las palabras consultadas -->
+            No hay palabras registradas.
+            </div>
+        </div>
+    </div>
+
+    <div class="listas">
+        <div id="listas_consultar" class="content">
+            <h2>Tus listas</h2>
+            <div class="container3">
+            <!-- Aquí estaría el contenido de las listas consultadas -->
+            No hay listas registradas.
+            </div>
+        </div>
+    </div>
+</main>
+<script src="../assets/js/dashpage.js"></script>
+<script>
+  function updateDateTime() {
+      // Obtener la fecha y hora actual del huso horario 'America/Cancun' (Sureste de México)
+      const options = {
+          timeZone: 'America/Cancun',
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric', 
+          hour: '2-digit', 
+          minute: '2-digit', 
+          second: '2-digit'
+      };
+      
+      // Obtener la fecha y hora en el formato deseado
+      const formatter = new Intl.DateTimeFormat('es-MX', options);
+      const dateTime = formatter.format(new Date());
+
+      // Mostrar la fecha y hora en el contenedor con el id 'datetime'
+      document.getElementById('datetime').innerHTML = dateTime;
+  }
+
+  // Actualizar la fecha y hora cada segundo
+  setInterval(updateDateTime, 1000);
+</script>
+</body>
+</html>

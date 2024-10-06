@@ -1,8 +1,8 @@
 <?php
 session_start();
-include("../bd/conexion.php");
+include("/bd/conexion.php");
 if (isset($_SESSION['id'])) {
-  header("Location: /indexdos.html");
+  header("Location: /assets/php/dashpage.php");
 }
 
 ?>

@@ -79,7 +79,7 @@ function JSalert2() {
           <div class="formbg">
 <?php 
 
-include("../bd/conexion.php");
+include("/bd/conexion.php");
         if(isset($_POST['submit'])){
             $email = $_POST['email'];
             $name = $_POST['name'];
